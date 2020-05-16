@@ -67,7 +67,7 @@ export default {
   components: {
     VueperSlides,
     VueperSlide
-  }
+  },
      computed:{
     host (){
       return this.$store.state.host.host
