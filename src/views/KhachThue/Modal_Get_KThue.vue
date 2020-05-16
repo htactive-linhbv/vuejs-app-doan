@@ -236,7 +236,7 @@
                   <div class="form-group row">
                     <label class="col-sm-12 col-form-label">Ảnh đại diện</label>
                     <div class="col-sm-12">
-                     <img :src="'http://localhost:3000/'+data.anhDaiDien" alt="" class="img-thumbnail" height="500px" width="100%">
+                     <img :src="host+data.anhDaiDien" alt="" class="img-thumbnail" height="500px" width="100%">
                     </div>
                    
                   </div>
@@ -245,7 +245,7 @@
                   <div class="form-group row">
                     <label class="col-sm-12 col-form-label">Ảnh CMND mặt trước</label>
                     <div class="col-sm-12">
-                      <img :src="'http://localhost:3000/'+data.anhCMNDTruoc" alt="" class="img-thumbnail" height="500px" width="100%">
+                      <img :src="host+data.anhCMNDTruoc" alt="" class="img-thumbnail" height="500px" width="100%">
                     </div>
                   </div>
                 </div>
@@ -253,7 +253,7 @@
                   <div class="form-group row">
                     <label class="col-sm-12 col-form-label">Ảnh CMND mặt sau</label>
                     <div class="col-sm-12">
-                     <img :src="'http://localhost:3000/'+data.anhCMNDSau" alt="" class="img-thumbnail" height="500px" width="100%">
+                     <img :src="host+data.anhCMNDSau" alt="" class="img-thumbnail" height="500px" width="100%">
                     </div>
                   </div>
                 </div>
@@ -282,7 +282,12 @@ export default {
       data: {},
     };
   },
- 
+    computed:{
+    host (){
+      return this.$store.state.host.host
+    },
+   
+  },
   methods: {
    
     getData(event) {

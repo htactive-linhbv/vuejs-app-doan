@@ -7,7 +7,7 @@
             <vueper-slide
               v-for="i in bai.images"
               :key="i"
-                :image="'http://localhost:3000/'+i"
+                :image="host+i"
               
               :style="'background-color: ' + ['#ff5252', '#42b983'][i % 2]"
             />
@@ -68,6 +68,12 @@ export default {
     VueperSlides,
     VueperSlide
   }
+     computed:{
+    host (){
+      return this.$store.state.host.host
+    },
+   
+  },
 };
 </script>
 

@@ -48,7 +48,7 @@
                 <div class="col-md-4" v-for="(img,i) in baiDang.images" :key="i">
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <img :src="'http://localhost:3000/'+img" alt="" class="img-thumbnail" height="200px" width="100%">
+                      <img :src="host+img" alt="" class="img-thumbnail" height="200px" width="100%">
                     </div>
                   </div>
                 </div>
@@ -77,7 +77,12 @@ export default {
       diaChi:{}
     };
   },
-
+   computed:{
+    host (){
+      return this.$store.state.host.host
+    },
+   
+  },
   methods: {
     getData(event) {
       this.baiDang = event.params.baiDang;

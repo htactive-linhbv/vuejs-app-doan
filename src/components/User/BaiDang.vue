@@ -74,7 +74,7 @@
             <vueper-slide
               v-for="slide in baiDangF"
               :key="slide._id"
-              :image="'http://localhost:3000/'+slide.images[0]"
+              :image="host+slide.images[0]"
               @mouseover="title('a')"
               :title="slide.tieuDe.toUpperCase()"
                 @click.native="detail(slide._id)"
@@ -97,6 +97,12 @@ export default {
   components: {
     VueperSlides,
     VueperSlide
+  },
+   computed:{
+    host (){
+      return this.$store.state.host.host
+    },
+   
   },
   methods:{
     detail(id) {

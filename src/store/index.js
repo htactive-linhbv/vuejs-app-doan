@@ -4,6 +4,7 @@ import auth from './modules/auth'
 import authAdmin from'./modules/authAdmin';
 import alert from './modules/alert'
 import menuActive from './modules/menu/menu'
+import host from './modules/imageLocal'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     auth,
     alert,
     menuActive,
-    authAdmin
+    authAdmin,
+    host
   }
 })
