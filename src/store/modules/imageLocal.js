@@ -2,7 +2,7 @@
 
 export default ({
     state: {
-       host:'http://137.117.45.206/'
+       host:'http://40.117.253.107/'
     },   
   })
   

@@ -9,7 +9,7 @@ import VModal from 'vue-js-modal'
 
 
 Vue.use(VModal);
-axios.defaults.baseURL ='http://137.117.45.206/api/';
+axios.defaults.baseURL ='http://40.117.253.107/api/';
 axios.defaults.headers.common['authorization-chutro'] = `Bearer ${localStorage.getItem('chutro-token')}`
 Vue.use(Vuelidate)
 Vue.config.productionTip = false
