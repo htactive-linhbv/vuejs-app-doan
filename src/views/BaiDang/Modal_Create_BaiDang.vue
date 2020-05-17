@@ -147,7 +147,7 @@
                 <div class="col-md-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <button class="btn btn-success" @click.prevent="create()">Thêm mới</button>
+                      <button class="btn btn-success" @click.prevent="create()"><span v-if="onLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Thêm mới</button>
                     </div>
                     <div class="col-md-6">
                       <button
