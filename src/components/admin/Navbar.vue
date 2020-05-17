@@ -33,7 +33,7 @@
           </div>
         </a>
         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-           <router-link class="dropdown-item" to='/quantri/taikhoan'>
+           <router-link class="dropdown-item" to='/admin/taikhoan'>
                   <i class="mdi mdi-cached mr-2 text-success"></i> Cài đặt tài khoản </router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" @click="logout">

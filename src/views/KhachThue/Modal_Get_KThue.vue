@@ -282,12 +282,11 @@ export default {
       data: {},
     };
   },
-    computed:{
-    host (){
+ computed:{
+   host (){
       return this.$store.state.host.host
     },
-   
-  },
+ },
   methods: {
    
     getData(event) {

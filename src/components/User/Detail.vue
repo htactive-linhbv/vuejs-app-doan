@@ -1,22 +1,26 @@
 <template>
   <div class="row" style="margin-bottom: 60px;">
-    <div class="col-7">
+    <div class="col-lg-12">
+      <div v-if="onLoading" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
       <div class="card">
         <div class="card-body">
           <vueper-slides fixed-height="500px">
             <vueper-slide
               v-for="i in bai.images"
               :key="i"
-                :image="host+i"
-              
+              :image="host+i"
               :style="'background-color: ' + ['#ff5252', '#42b983'][i % 2]"
             />
           </vueper-slides>
         </div>
       </div>
     </div>
-    <div class="col-5" >
-      <div class="card"  >
+    <div class="col-lg-12">
+      <div class="card">
         <div class="card-body">
           <h2>Tiêu đề: {{bai.tieuDe}}</h2>
           <h4 class="text-danger">
@@ -49,7 +53,10 @@
             <i class="mdi mdi-cellphone-basic"></i>
             Liên hệ {{bai.soDienThoai}}
           </h5>
-         <h5>Mô Tả<p>{{bai.moTa}}</p></h5> 
+          <h5>
+            Mô Tả
+            <p>{{bai.moTa}}</p>
+          </h5>
         </div>
       </div>
     </div>
@@ -62,18 +69,23 @@ import "vueperslides/dist/vueperslides.css";
 export default {
   props: ["bai"],
   mounted() {
-    console.log(this.bai, "acv");
+   
+  },
+  computed: {
+    host() {
+      return this.$store.state.host.host;
+    }
+  },
+  data() {
+    return {
+      onLoading: false
+    };
   },
   components: {
     VueperSlides,
     VueperSlide
   },
-     computed:{
-    host (){
-      return this.$store.state.host.host
-    },
-   
-  },
+  methods: {}
 };
 </script>
 

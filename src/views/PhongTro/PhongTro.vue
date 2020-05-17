@@ -52,7 +52,7 @@
                     </div>
                   </div>
 
-                  <table class="table">
+                  <table class="table table-responsive-xl">
                     <thead>
                       <tr>
                         <th>Tên Phòng Trọ</th>

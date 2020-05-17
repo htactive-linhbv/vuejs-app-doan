@@ -55,11 +55,10 @@ export default {
     VueperSlides,
     VueperSlide
   },
-     computed:{
+  computed:{
     host (){
       return this.$store.state.host.host
     },
-   
   },
   methods: {
     detail(id) {

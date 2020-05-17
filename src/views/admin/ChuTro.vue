@@ -28,7 +28,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Danh Sách</h4>
 
-                  <table class="table">
+                  <table class="table table-responsive-xl">
                     <thead>
                       <tr>
                         <th scope="col">Tên Chủ Trọ</th>

@@ -77,12 +77,11 @@ export default {
       diaChi:{}
     };
   },
-   computed:{
-    host (){
+computed:{
+  host (){
       return this.$store.state.host.host
     },
-   
-  },
+},
   methods: {
     getData(event) {
       this.baiDang = event.params.baiDang;

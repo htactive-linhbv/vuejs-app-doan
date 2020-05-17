@@ -46,7 +46,7 @@ export default ({
                     localStorage.setItem("chutro-token", response.data.token);
                     localStorage.setItem("chutro-profile-name", response.data.chutro.hoVaTen);
                     localStorage.setItem("chutro-profile-id", response.data.chutro._id);
-                    axios.defaults.headers.common['Authorization-chutro'] = `Bearer ${response.data.token}`
+                    axios.defaults.headers.common['authorization-chutro'] = `Bearer ${response.data.token}`
                     resolve(response)
                 }).catch(err => {
 

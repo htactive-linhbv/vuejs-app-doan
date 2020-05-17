@@ -55,18 +55,19 @@ export default {
     VueperSlides,
     VueperSlide
   },
-     computed:{
+  computed:{
     host (){
       return this.$store.state.host.host
     },
-   
   },
   methods: {
     detail(id) {
-      this.$router.push({
-        name: "detail",
-        params: { id: id }
-      });
+      this.$emit('detail',id)
+      // this.$router.push({
+      //   name: "detail",
+      //   params: { id: id },
+        
+      // });
     }
   }
 };

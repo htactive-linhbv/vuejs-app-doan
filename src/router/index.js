@@ -64,6 +64,12 @@ const routes = [
       component: () => import(/* webpackChunkName: "about" */ '../views/admin/login'),
     },
     {
+      path: '/admin/taikhoan',
+      name: 'adminTaiKhoan',
+      meta: {title: 'ADMIN | Cài Đặt tài khoản'},
+      component: () => import(/* webpackChunkName: "about" */ '../views/admin/login'),
+    },
+    {
       path: '/admin/',
       name: 'adminHome',
       meta: {title: 'ADMIN | HOME'},
@@ -75,7 +81,7 @@ const routes = [
       name: 'adminBaiDang',
       meta: {title: 'ADMIN | QL Bài Đăng'},
       beforeEnter: checkAdminLogin,
-      component: () => import(/* webpackChunkName: "about" */ '../views/admin/AdminBaiDang'),
+      component: () => import(/* webpackChunkName: "about" */ '../views/admin/AdminTaiKhoan'),
     },
     {
       path: '/admin/chitietchutro',

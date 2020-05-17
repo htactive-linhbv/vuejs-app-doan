@@ -29,7 +29,7 @@
                       <span class="sr-only">Loading...</span>
                     </div>
                   </div>
-                  <table class="table">
+                  <table class="table table-responsive-xl">
                     <thead>
                       <tr>
                         <th>Tên Dịch vụ</th>
