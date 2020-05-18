@@ -10,7 +10,7 @@ import VModal from 'vue-js-modal'
 
 Vue.use(VModal);
 
-axios.defaults.baseURL ='http://40.117.253.107/api/';
+axios.defaults.baseURL ='http://52.149.155.107/api/';
 axios.defaults.headers.common['authorization-chutro'] = `Bearer ${localStorage.getItem('chutro-token')}`;
 axios.defaults.headers.common['authorization-admin'] = `Bearer ${localStorage.getItem('admin-token')}`;
 Vue.use(Vuelidate)
