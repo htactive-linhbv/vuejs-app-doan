@@ -1,5 +1,5 @@
 <template>
-  <modal name="createBaiDang" :scrollable="true" height="auto" width="80%">
+  <modal name="createBaiDang" :scrollable="true" height="auto" width="80%" @before-open="getData">
     <div class="row" style="margin-top:20px">
       <div class="col-md-11"></div>
       <div class="col-md-1">
@@ -20,7 +20,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Khu trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Khu trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -44,7 +47,10 @@
                 </div>
                 <div class="col-md-6" v-if="phongTros">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Phòng trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Phòng trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -70,7 +76,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Tiêu Đề<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Tiêu Đề
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -89,7 +98,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Số ĐT liên hệ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Số ĐT liên hệ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -136,9 +148,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="text-center col-md-4 " v-for="url in urlPhotos" :key="url">
-                    <img class="rounded" :src="url" alt="..." />
+              </div>
+              <div class="row">
+                <div class="card-body col-sm-12">
+                  <div class="row"></div>
+                  <div class="row">
+                    <div class="col-md-4" v-for="(url,i) in urlPhotos" :key="i">
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <img :src="url" alt class="img-thumbnail" max-height="200px" width="100%" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -147,7 +168,14 @@
                 <div class="col-md-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <button class="btn btn-success" @click.prevent="create()"> <span v-if="onLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Thêm mới</button>
+                      <button class="btn btn-success" @click.prevent="create()">
+                        <span
+                          v-if="onLoading"
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>Thêm mới
+                      </button>
                     </div>
                     <div class="col-md-6">
                       <button
@@ -185,7 +213,7 @@ export default {
       moTa: "",
       onLoading: false,
       photos: [],
-      urlPhotos:[]
+      urlPhotos: []
     };
   },
   components: {
@@ -206,6 +234,15 @@ export default {
     }
   },
   methods: {
+    getData() {
+      this.tieuDe = "";
+      this.soDienThoai = "";
+      this.moTa = "";
+      this.onLoading = false;
+      this.photos = [];
+      this.urlPhotos = [];
+      this.$v.$reset();
+    },
     create() {
       this.onLoading = true;
       let formData = new FormData();
@@ -213,27 +250,33 @@ export default {
       for (let i = 0; i < intAnh; i++) {
         formData.append("photos", this.photos[i]);
       }
-      formData.append('tieuDe',this.tieuDe);
-      formData.append('khuTro_id',this.khuTro_id)
-      formData.append('phongTro_id',this.phongTro_id)
-      formData.append('soDienThoai',this.soDienThoai)
-      formData.append('moTa',this.moTa)
+      formData.append("tieuDe", this.tieuDe);
+      formData.append("khuTro_id", this.khuTro_id);
+      formData.append("phongTro_id", this.phongTro_id);
+      formData.append("soDienThoai", this.soDienThoai);
+      formData.append("moTa", this.moTa);
 
-      //    if (!this.$v.data.$invalid) {
-      axios.post("/baidang/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      }).then(()=>{
-        this.onLoading=false
+      if (!this.$v.$invalid) {
+        axios
+          .post("/baidang/", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          })
+          .then(() => {
+            this.onLoading = false;
             alert("Thêm mới thành công");
             this.$emit("createSuccess");
             this.$modal.hide("createBaiDang");
-      }).catch(()=>{
-        alert("Thêm mới thất bại");
-        this.onLoading=false
-      });
-      //   }
+          })
+          .catch(() => {
+            alert("Thêm mới thất bại");
+            this.onLoading = false;
+          });
+      } else {
+        this.$v.$touch();
+        this.onLoading = false;
+      }
     },
     tinhTrangPhongF(tinhTrang) {
       if (!tinhTrang) {
@@ -245,12 +288,17 @@ export default {
       this.onLoading = true;
       axios.get("/khutro/getphongtro").then(response => {
         this.khuTros = response.data.data;
-
+        this.khuTro_id = this.khuTros[0]._id;
+        this.phongTros = this.khuTros[0].phongTro_ids;
         this.onLoading = false;
       });
     },
     onChangeFileUpload() {
       this.photos = this.$refs.photos.files;
+      this.urlPhotos = [];
+      this.photos.forEach(item => {
+        this.urlPhotos.push(URL.createObjectURL(item));
+      });
     },
     getDataPhong() {
       this.$v.khuTro_id.$touch();

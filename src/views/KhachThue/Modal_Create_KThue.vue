@@ -21,7 +21,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Họ tên Khách<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Họ tên Khách
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -41,7 +44,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Số điện thoại<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Số điện thoại
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -72,7 +78,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Giới tính<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Giới tính
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -93,18 +102,21 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Ngày Sinh<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Ngày Sinh
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <date-dropdown
-                       min="1940"
-                       max="2030"
-                       default="1995-01-14"
-                      name='ngaySinh'
+                        min="1940"
+                        max="2030"
+                        default="1995-01-14"
+                        name="ngaySinh"
                         v-model="data.ngaySinh"
                         @change="$v.data.ngaySinh.$touch()"
                         months-names="Tháng 1, Tháng 2, Tháng 3, Tháng 4, Tháng 5, Tháng 6, Tháng 7, Tháng 8, Tháng 9, Tháng 10, Tháng 11, Tháng 12s"
                       ></date-dropdown>
-                     
+
                       <div
                         class="alert alert-danger"
                         v-if="$v.data.ngaySinh.$error"
@@ -118,7 +130,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Số CMND/CCCD<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Số CMND/CCCD
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -137,12 +152,15 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Ngày cấp CMND<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Ngày cấp CMND
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <date-dropdown
-                       min="1940"
-                       max="2030"
-                      name='ngayCapCMND'
+                        min="1940"
+                        max="2030"
+                        name="ngayCapCMND"
                         v-model="data.ngayCapCMND"
                         @change="$v.data.ngayCapCMND.$touch()"
                         months-names="Tháng 1, Tháng 2, Tháng 3, Tháng 4, Tháng 5, Tháng 6, Tháng 7, Tháng 8, Tháng 9, Tháng 10, Tháng 11, Tháng 12s"
@@ -159,7 +177,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Nơi cấp CMND<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Nơi cấp CMND
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -179,7 +200,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Hộ Khẩu<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Hộ Khẩu
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -201,7 +225,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Nghề nghiệp<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Nghề nghiệp
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -251,7 +278,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Số điện thoại<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Số điện thoại
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -289,7 +319,10 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group row">
-                    <label class="col-sm-12 col-form-label">Ảnh đại diện<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-12 col-form-label">
+                      Ảnh đại diện
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-12">
                       <input
                         type="file"
@@ -299,15 +332,17 @@
                         name="anhDaiDien"
                       />
                     </div>
-                    <div class="col-sm-12 text-center  overflow: hidden;" v-if="urlAnhDaiDien">
-                      <img  :src='urlAnhDaiDien' class="img-fluid" alt="..." />
+                    <div class="col-sm-12 text-center overflow: hidden;" v-if="urlAnhDaiDien">
+                      <img :src="urlAnhDaiDien" class="img-fluid" alt="..." />
                     </div>
                   </div>
-                  
                 </div>
                 <div class="col-md-4">
                   <div class="form-group row">
-                    <label class="col-sm-12 col-form-label">Ảnh CMND mặt trước<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-12 col-form-label">
+                      Ảnh CMND mặt trước
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-12">
                       <input
                         type="file"
@@ -317,14 +352,17 @@
                         name="anhCMNDTruoc"
                       />
                     </div>
-                     <div class="col-sm-12 text-center  overflow: hidden;" v-if="ulrAnhTruoc">
-                      <img  :src='ulrAnhTruoc' class="img-fluid" alt="..." />
+                    <div class="col-sm-12 text-center overflow: hidden;" v-if="ulrAnhTruoc">
+                      <img :src="ulrAnhTruoc" class="img-fluid" alt="..." />
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group row">
-                    <label class="col-sm-12 col-form-label">Ảnh CMND mặt sau<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-12 col-form-label">
+                      Ảnh CMND mặt sau
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-12">
                       <input
                         type="file"
@@ -334,15 +372,23 @@
                         name="anhCMNDSau"
                       />
                     </div>
-                    <div class="col-sm-12 text-center  overflow: hidden;" v-if="urlAnhSau">
-                      <img  :src='urlAnhSau' class="img-fluid" alt="..." />
+                    <div class="col-sm-12 text-center overflow: hidden;" v-if="urlAnhSau">
+                      <img :src="urlAnhSau" class="img-fluid" alt="..." />
                     </div>
                   </div>
                 </div>
               </div>
               <p class="card-description"></p>
               <div class="row">
-                <button class="btn btn-gradient-primary mr-2" @click.prevent="create">Thêm Mới <span v-if="onLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+                <button class="btn btn-gradient-primary mr-2" @click.prevent="create">
+                  Thêm Mới
+                  <span
+                    v-if="onLoading"
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </button>
                 <button class="btn btn-light">Cancel</button>
               </div>
             </form>
@@ -350,7 +396,6 @@
         </div>
       </div>
     </div>
-   
   </modal>
 </template>
 
@@ -359,15 +404,13 @@
 import axios from "axios";
 import DateDropdown from "vue-date-dropdown";
 
-
 const { required, numeric } = require("vuelidate/lib/validators");
 export default {
   created() {},
   data: function() {
     return {
-      onLoading:false,
+      onLoading: false,
       data: {
-        
         tenKhachThue: null,
         sdtKhachThue: null,
         ngaySinh: null,
@@ -382,9 +425,9 @@ export default {
         sdtBoMe: null,
         ghiChu: null
       },
-      urlAnhDaiDien:null,
-      urlAnhSau:null,
-      ulrAnhTruoc:null,
+      urlAnhDaiDien: null,
+      urlAnhSau: null,
+      ulrAnhTruoc: null,
       anhDaiDien: "",
       anhCMNDTruoc: "",
       anhCMNDSau: ""
@@ -428,29 +471,30 @@ export default {
     }
   },
   methods: {
-    getData(){
-       this.data={};
-         this.urlAnhDaiDien=null,
-      this.urlAnhSau=null,
-      this.ulrAnhTruoc=null,
-      this.anhDaiDien= "",
-      this.sanhCMNDTruoc= "",
-      this.anhCMNDSau= ""
+    getData() {
+      this.$v.$reset();
+      this.data = {};
+      (this.urlAnhDaiDien = null),
+        (this.urlAnhSau = null),
+        (this.ulrAnhTruoc = null),
+        (this.anhDaiDien = ""),
+        (this.sanhCMNDTruoc = ""),
+        (this.anhCMNDSau = "");
     },
     onChangeFileUpload1() {
       this.anhDaiDien = this.$refs.anhDaiDien.files[0];
-      this.urlAnhDaiDien = URL.createObjectURL(this.anhDaiDien)
+      this.urlAnhDaiDien = URL.createObjectURL(this.anhDaiDien);
     },
     onChangeFileUpload2() {
       this.anhCMNDTruoc = this.$refs.anhCMNDTruoc.files[0];
-       this.ulrAnhTruoc = URL.createObjectURL(this.anhCMNDTruoc)
+      this.ulrAnhTruoc = URL.createObjectURL(this.anhCMNDTruoc);
     },
     onChangeFileUpload3() {
       this.anhCMNDSau = this.$refs.anhCMNDSau.files[0];
-      this.urlAnhSau = URL.createObjectURL(this.anhCMNDSau)
+      this.urlAnhSau = URL.createObjectURL(this.anhCMNDSau);
     },
     create() {
-      this.onLoading=true;
+      this.onLoading = true;
       let formData = new FormData();
       formData.append("anhDaiDien", this.anhDaiDien);
       formData.append("anhCMNDTruoc", this.anhCMNDTruoc);
@@ -467,7 +511,7 @@ export default {
             }
           })
           .then(() => {
-            this.onLoading=false
+            this.onLoading = false;
             alert("Thêm mới thành công");
             this.$emit("createSuccess");
             this.$modal.hide("createKhachThue");
@@ -476,7 +520,7 @@ export default {
             alert("Thêm mới thất bại");
           });
       } else {
-        this.onLoading=false;
+        this.onLoading = false;
         this.$v.$touch();
       }
     }
