@@ -26,10 +26,10 @@
           <div class="row">
             <div class="col-12 stretch-card">
               <div class="card">
-                <div class="card-body ">
+                <div class="card-body">
                   <h4 class="card-title">Danh Sách</h4>
 
-                  <table class="table  table-responsive-xl">
+                  <table class="table table-responsive-xl">
                     <thead>
                       <tr>
                         <th scope="col">Tên Hoá đơn</th>
@@ -37,9 +37,9 @@
                         <th scope="col">Tên Khách đại diện</th>
                         <th scope="col">Phòng</th>
                         <th scope="col">Tổng tiền</th>
+                        <th scope="col">ngày Tạo</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Option</th>
-                        
                       </tr>
                     </thead>
                     <tbody>
@@ -54,12 +54,13 @@
                           currency: "VND"
                           }).format(hd.tongTien)}}
                         </td>
-                          <td>
+                        <td>{{hd.ngayLapHoaDon}}</td>
+                        <td>
                           <label v-if="hd.tinhTrang" class="badge badge-success">Đã Thanh Toán</label>
                           <label v-else class="badge badge-danger">Chưa thanh toán</label>
                         </td>
                         <td>
-                          <div class="dropdown" >
+                          <div class="dropdown">
                             <button
                               class="btn btn-info btn-fw dropdown-toggle"
                               type="button"
@@ -110,15 +111,15 @@ import Narbar from "../../components/Navbar.vue";
 import Sidebar from "../../components/Sidebar.vue";
 import ModalCreate from "./Modal_Create_HoaDon";
 import ModalUpdate from "./Modal_Update_HoaDon";
-import ModalGet from './Modal_Get_HoaDon';
+import ModalGet from "./Modal_Get_HoaDon";
 
 import axios from "axios";
 export default {
   name: "hoadon",
   data() {
     return {
-      hoaDons:null,
-      onLoading: false,
+      hoaDons: null,
+      onLoading: false
     };
   },
   mounted() {
@@ -126,9 +127,6 @@ export default {
     axios.get("/hoadon/").then(response => {
       this.hoaDons = response.data.data;
       this.onLoading = false;
-      
-    
-      
     });
   },
 
@@ -140,32 +138,28 @@ export default {
     ModalUpdate,
     ModalGet
   },
-  computed:{
-
-  },
+  computed: {},
   methods: {
     showModalCreate() {
       this.$modal.show("createHoaDon");
     },
     showModalUpdate(id) {
-      
-        const hoaDon = this.hoaDons.find(item=>item._id==id);
-        if(hoaDon.tinhTrang===true){
-          alert('Hoá đơn này đã thanh toán');
-        }else{
-             this.$modal.show("updateHoaDon", { hoaDon: hoaDon });
-        }
-     
+      const hoaDon = this.hoaDons.find(item => item._id == id);
+      if (hoaDon.tinhTrang === true) {
+        alert("Hoá đơn này đã thanh toán");
+      } else {
+        this.$modal.show("updateHoaDon", { hoaDon: hoaDon });
+      }
     },
-     showModalGet(id) {
-      const hoaDon = this.hoaDons.find(item=>item._id==id);
-     this.$modal.show("getHoaDon", { hoaDon: hoaDon});
+    showModalGet(id) {
+      const hoaDon = this.hoaDons.find(item => item._id == id);
+      this.$modal.show("getHoaDon", { hoaDon: hoaDon });
     },
     getNewData() {
       this.onLoading = true;
-    axios.get("/hoadon/").then(response => {
-      this.hoaDons = response.data.data;
-      this.onLoading = false;
+      axios.get("/hoadon/").then(response => {
+        this.hoaDons = response.data.data;
+        this.onLoading = false;
       });
     },
     remove(id) {

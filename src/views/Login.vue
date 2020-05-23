@@ -7,8 +7,6 @@
             <div class="auth-form-light text-left p-5">
               <div class="brand-logo">
                 <!-- <img src="../../assets/images/logo.svg"> -->
-               
-
               </div>
               <h4>Xin Chào!</h4>
               <h6 class="font-weight-light">Đăng nhập để vào trang quản lý.</h6>
@@ -56,7 +54,10 @@
 
                 <div class="text-center mt-4 font-weight-light">
                   Chưa có tài khoản?
-                  <a href="register.html" class="text-primary">Liên hệ với chúng tôi</a>
+                  <a
+                    href="register.html"
+                    class="text-primary"
+                  >Liên hệ với chúng tôi</a>
                 </div>
               </form>
             </div>
@@ -73,15 +74,14 @@
 //import { AUTH_REQUEST } from "actions/auth";
 export default {
   name: "login",
-  data: ()=> {
+  data: () => {
     return {
       chutro: {
         email: "",
-        password: "",
-        
+        password: ""
       },
       onLoading: false,
-        onMessage: ""
+      onMessage: ""
     };
   },
   methods: {
@@ -91,7 +91,7 @@ export default {
         .dispatch("LOGIN", this.chutro)
         .then(() => {
           this.onLoading = false;
-          this.$router.push({ path:'/quantri/dichvu' });
+          this.$router.push({ path: "/quantri/" });
         })
         .catch(err => {
           this.onMessage = err.response.data.message;
