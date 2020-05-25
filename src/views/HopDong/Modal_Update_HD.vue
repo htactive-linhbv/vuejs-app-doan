@@ -20,7 +20,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Khu trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Khu trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -44,7 +47,10 @@
                 </div>
                 <div class="col-md-6" v-if="phongTros">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Phòng trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Phòng trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -70,7 +76,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Khách Thuê<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Khách Thuê
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select class="form-control" v-model="khachThue_id" name="khachThue_id">
                         <option
@@ -99,7 +108,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Tên Hợp Đồng<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Tên Hợp Đồng
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <input
                         type="text"
@@ -119,7 +131,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Thời hạn<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Thời hạn
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select class="form-control" v-model="thoiHan" name="thoiHan">
                         <option value="1 tháng">1 Tháng</option>
@@ -140,14 +155,17 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Ngày Bắt đầu<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Ngày Bắt đầu
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <date-dropdown
                         min="2019"
                         max="2030"
                         name="ngayBatDau"
                         v-model="ngayBatDau"
-                         :default="ngayBatDauF"
+                        :default="ngayBatDauF"
                         months-names="Tháng 1, Tháng 2, Tháng 3, Tháng 4, Tháng 5, Tháng 6, Tháng 7, Tháng 8, Tháng 9, Tháng 10, Tháng 11, Tháng 12s"
                       ></date-dropdown>
                     </div>
@@ -155,7 +173,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Ngày Kết thúc<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Ngày Kết thúc
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <date-dropdown
                         min="2019"
@@ -172,7 +193,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Tiền cọc<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Tiền cọc
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <div class="input-group">
                         <input
@@ -200,7 +224,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Nội dung<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Nội dung
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <textarea
                         rows="8"
@@ -259,15 +286,15 @@ export default {
       phongTros: "",
       khuTros: "",
       khachThues: "",
-      hopDong_id:'',
+      hopDong_id: "",
       tenHopDong: null,
       loaiHopDong: null,
       khachThue_id: null,
       khuTro_id: null,
       phongTro_id: null,
       thoiHan: null,
-      ngayBatDau: '',
-      ngayKetThuc: '',
+      ngayBatDau: "",
+      ngayKetThuc: "",
       tienCoc: null,
       noiDung: null,
       onLoading: false
@@ -362,9 +389,9 @@ export default {
       this.ngayBatDau = this.hopDong.ngayBatDau;
       this.ngayKetThuc = this.hopDong.ngayKetThuc;
       this.tienCoc = this.hopDong.tienCoc;
+      this.changeTienCoc();
       this.noiDung = this.hopDong.noiDung;
       console.log(this.hopDong.ngayKetThuc);
-      
     },
     changeTienCoc() {
       this.tienCocF = new Intl.NumberFormat("it-IT", {

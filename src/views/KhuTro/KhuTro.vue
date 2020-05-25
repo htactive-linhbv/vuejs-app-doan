@@ -3,7 +3,7 @@
     <app-narbar></app-narbar>
     <div class="container-fluid page-body-wrapper">
       <app-sidebar></app-sidebar>
-      <div class="main-panel ">
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">Khu Trọ</h3>
@@ -18,7 +18,7 @@
               <button class="btn btn-success" @click="showModalCreate()">Thêm mới</button>
             </nav>
           </div>
-           <div v-if="onLoading" class="d-flex justify-content-center text-primary">
+          <div v-if="onLoading" class="d-flex justify-content-center text-primary">
             <div class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
             </div>
@@ -45,16 +45,24 @@
                         <td>{{kt.tenKhuTro}}</td>
                         <td>{{ `${kt.diaChi.Tinh} / ${kt.diaChi.Quan} / ${kt.diaChi.Duong}`}}</td>
                         <td>{{kt.soTang}}</td>
-                        <td>{{kt.mota}}</td>
+                        <td>{{formatString(kt.mota)}}</td>
                         <td>
                           <label v-if="kt.trangThai" class="badge badge-success">Bình Thường</label>
                           <label v-else class="badge badge-danger">Bảo trì</label>
                         </td>
                         <td>
-                          <button class="btn btn-info btn-icon" title="Cập nhập" @click="showModalUpdate(kt._id)">
+                          <button
+                            class="btn btn-info btn-icon"
+                            title="Cập nhập"
+                            @click="showModalUpdate(kt._id)"
+                          >
                             <i class="mdi mdi-lead-pencil"></i>
                           </button>
-                          <button class="btn btn-danger btn-icon" title="Xoá"  @click="remove(kt._id)">
+                          <button
+                            class="btn btn-danger btn-icon"
+                            title="Xoá"
+                            @click="remove(kt._id)"
+                          >
                             <i class="mdi mdi-delete-forever"></i>
                           </button>
                         </td>
@@ -65,16 +73,11 @@
               </div>
             </div>
           </div>
-         
         </div>
       </div>
     </div>
-    <modal-create
-         @createSuccess="getNewData" 
-    ></modal-create>
-    <modal-update
-     @updateSuccess="getNewData"
-    ></modal-update>
+    <modal-create @createSuccess="getNewData"></modal-create>
+    <modal-update @updateSuccess="getNewData"></modal-update>
   </div>
 </template>
 
@@ -84,69 +87,78 @@
 import Narbar from "../../components/Navbar.vue";
 import Sidebar from "../../components/Sidebar.vue";
 import ModalCreate from "./Modal_Create_KT.vue";
-import ModalUpdate from './Modal_update_KT.vue'
+import ModalUpdate from "./Modal_update_KT.vue";
 import axios from "axios";
 export default {
   name: "KhuTro",
   data() {
     return {
-      onLoading:false,
-      khuTros: null,
-      
+      onLoading: false,
+      khuTros: null
     };
   },
   mounted() {
-    this.onLoading=true;
-    axios.get('/khutro/').then(response => {
-      this.khuTros = response.data.data;
-    
-      this.onLoading=false
-    }).catch(()=>{
-      this.onLoading=false
-    });
-    
+    this.onLoading = true;
+    axios
+      .get("/khutro/")
+      .then(response => {
+        this.khuTros = response.data.data;
+
+        this.onLoading = false;
+      })
+      .catch(() => {
+        this.onLoading = false;
+      });
   },
- 
+
   components: {
     //HelloWorld,
     appNarbar: Narbar,
     appSidebar: Sidebar,
     ModalCreate,
     ModalUpdate
-
   },
   methods: {
     showModalCreate() {
       this.$modal.show("createKhuTro");
     },
-    showModalUpdate(id){
-        this.$modal.show('updateKhuTro',{id:id})
+    showModalUpdate(id) {
+      this.$modal.show("updateKhuTro", { id: id });
     },
-    getNewData(){
-      this.onLoading=true
-      axios.get('/khutro/').then(response => {
-      this.khuTros = response.data.data;
-      this.onLoading = false
-    });
+    getNewData() {
+      this.onLoading = true;
+      axios.get("/khutro/").then(response => {
+        this.khuTros = response.data.data;
+        this.onLoading = false;
+      });
     },
-    remove(id){
-       const khutro = this.khuTros.find(item => item._id == id);
+    formatString(string) {
+      if (string.length > 20) {
+        return string.slice(0, 20) + " ...";
+      } else return string;
+    },
+    remove(id) {
+      const khutro = this.khuTros.find(item => item._id == id);
       if (khutro.phongTro_ids.length > 0) {
-          alert("Vẫn còn phòng trọ trong khu này... Hãy xoá phòng trọ trước!");
-        } else {
-         const result = confirm("Bạn có muốn xoá Khu Trọ");
-      if (result) {
-        this.onLoading=true;
-        axios.delete(`/khutro/${id}/delete`).then(() => {
-          alert("Delete thành công");
-          this.onLoading=false;
-         this.getNewData();
-        }).catch(()=>{
-          this.onLoading=false;
-            alert('delete thất bại')
-        });
-      }}
+        alert("Vẫn còn phòng trọ trong khu này... Hãy xoá phòng trọ trước!");
+      } else {
+        const result = confirm("Bạn có muốn xoá Khu Trọ");
+        if (result) {
+          this.onLoading = true;
+          axios
+            .delete(`/khutro/${id}/delete`)
+            .then(() => {
+              alert("Delete thành công");
+              this.onLoading = false;
+              this.getNewData();
+            })
+            .catch(() => {
+              this.onLoading = false;
+              alert("delete thất bại");
+            });
+        }
+      }
     }
-  },
+  }
 };
 </script>

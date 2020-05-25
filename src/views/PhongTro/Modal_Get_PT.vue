@@ -1,12 +1,5 @@
 <template>
-  <modal
-    name="getPhongTro"
-    :scrollable="true"
-    height="auto"
-    width="80%"
-    @before-open="getData"
-    
-  >
+  <modal name="getPhongTro" :scrollable="true" height="auto" width="80%" @before-open="getData">
     <div class="row" style="margin-top:20px">
       <div class="col-md-11"></div>
       <div class="col-md-1">
@@ -145,8 +138,10 @@
                           v-if="khachThue_ids.length===0"
                         >Phòng trống</a>
                         <a
-                          class="list-group-item list-group-item-action list-group-item-danger"
-                          v-else v-for="khach in khachThue_ids" :key="khach._id"
+                          class="list-group-item list-group-item-action list-group-item-info"
+                          v-else
+                          v-for="khach in khachThue_ids"
+                          :key="khach._id"
                         >{{khach.tenKhachThue}}</a>
                       </div>
                     </div>
@@ -188,7 +183,6 @@
 import axios from "axios";
 
 export default {
-  
   data: function() {
     return {
       khuTros: null,
@@ -211,7 +205,7 @@ export default {
       //   this.khuTros = response.data.data;
       // });
       axios.get(`/phongtro/${event.params.id}/chitiet`).then(response => {
-        this.khuTros = event.params.khuTros;  
+        this.khuTros = event.params.khuTros;
         this.idPhong = event.params.id;
         this.khuTro_id = event.params.khuTro_id;
         this.tenPhongTro = response.data.data.tenPhongTro;

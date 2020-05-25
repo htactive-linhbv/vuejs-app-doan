@@ -157,10 +157,16 @@ export default {
     },
     getNewData() {
       this.onLoading = true;
-      axios.get("/hoadon/").then(response => {
-        this.hoaDons = response.data.data;
-        this.onLoading = false;
-      });
+      axios
+        .get("/hoadon/")
+        .then(response => {
+          this.hoaDons = response.data.data;
+          this.onLoading = false;
+        })
+        .catch(err => {
+          console.log(err);
+          this.onLoading = false;
+        });
     },
     remove(id) {
       const result = confirm("Bạn có muốn xoá Hoá đơn này");

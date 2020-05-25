@@ -93,16 +93,18 @@ export default {
     };
   },
   mounted() {
-    this.onLoading=true;
-    axios.get("/dichvu/").then(response => {
-      this.dichVus = response.data.data;
-      this.onLoading=false
-    }).catch(()=>{
-      this.onLoading=false
-    });
+    this.onLoading = true;
+    axios
+      .get("/dichvu/")
+      .then(response => {
+        this.dichVus = response.data.data;
+        this.onLoading = false;
+      })
+      .catch(() => {
+        this.onLoading = false;
+      });
   },
-  computed: {
-  },
+  computed: {},
   components: {
     //HelloWorld,
     appNarbar: Narbar,
@@ -111,18 +113,18 @@ export default {
     ModalUpdate
   },
   methods: {
-     quyTacTinh(quytac){
-      if(quytac==='1'){
-        return 'Theo Số Người/Phòng'
+    quyTacTinh(quytac) {
+      if (quytac === "1") {
+        return "Theo Số Người/Phòng";
       }
-      if(quytac==='2'){
-        return 'Tính theo phòng'
+      if (quytac === "2") {
+        return "Tính theo phòng";
       }
-      if(quytac==='3'){
-        return 'Tính theo số tiêu thụ'
+      if (quytac === "3") {
+        return "Tính theo số tiêu thụ";
       }
-      if(quytac==='4'){
-        return 'Dịch vụ Miễn phí'
+      if (quytac === "4") {
+        return "Dịch vụ Miễn phí";
       }
     },
     changDonGia(donGia) {
@@ -138,22 +140,26 @@ export default {
       this.$modal.show("updateDichVu", { id: id });
     },
     getNewData() {
-      this.onLoading=true
+      this.onLoading = true;
       axios.get("/dichvu/").then(response => {
         this.dichVus = response.data.data;
-        this.onLoading=false
+        this.onLoading = false;
       });
     },
     remove(id) {
       const result = confirm("Bạn có muốn xoá dịch vụ");
+
       if (result) {
+        this.onLoading = true;
         axios
           .delete(`/dichvu/${id}/delete`)
           .then(() => {
+            this.onLoading = false;
             alert("Delete thành công");
             this.getNewData();
           })
           .catch(() => {
+            this.onLoading = false;
             alert("delete thất bại");
           });
       }

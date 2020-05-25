@@ -57,14 +57,21 @@
                               data-toggle="dropdown"
                               aria-haspopup="true"
                               aria-expanded="false"
-                            ><span v-if="btnLoanding" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Tác vụ</button>
+                            >
+                              <span
+                                v-if="btnLoanding"
+                                class="spinner-border spinner-border-sm"
+                                role="status"
+                                aria-hidden="true"
+                              ></span> Tác vụ
+                            </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                               <button
                                 class="dropdown-item"
                                 type="button"
                                 @click.prevent="showModalGet(bd._id)"
                               >Xem chi tiết</button>
-                             
+
                               <button
                                 class="dropdown-item"
                                 type="button"
@@ -96,7 +103,7 @@ import Narbar from "../../components/Navbar.vue";
 import Sidebar from "../../components/Sidebar.vue";
 import ModalCreate from "./Modal_Create_BaiDang.vue";
 //import ModalUpdate from "./Modal_Update_HoaDon";
-import ModalGet from './Modal_Get_BaiDang';
+import ModalGet from "./Modal_Get_BaiDang";
 
 import axios from "axios";
 export default {
@@ -105,7 +112,7 @@ export default {
     return {
       baiDangs: null,
       onLoading: false,
-      btnLoanding:false
+      btnLoanding: false
     };
   },
   mounted() {
@@ -137,29 +144,33 @@ export default {
       const baiDang = this.baiDangs.find(item => item._id == id);
       this.$modal.show("getBaiDang", { baiDang: baiDang });
     },
+    
     getNewData() {
       this.onLoading = true;
-      axios.get("/baidang/").then(response => {
-        this.baiDangs = response.data.data;
-        this.onLoading = false;
-      }).catch(()=>{
-        this.onLoading =false
-      });
+      axios
+        .get("/baidang/")
+        .then(response => {
+          this.baiDangs = response.data.data;
+          this.onLoading = false;
+        })
+        .catch(() => {
+          this.onLoading = false;
+        });
     },
     remove(id) {
       const result = confirm("Bạn có muốn bài đăng này");
       if (result) {
-        this.btnLoanding = true
+        this.btnLoanding = true;
         axios
           .delete(`/baidang/${id}/delete`)
           .then(() => {
             alert("Delete thành công");
             this.getNewData();
-            this.btnLoanding=false
+            this.btnLoanding = false;
           })
           .catch(() => {
             alert("delete thất bại");
-            this.btnLoanding=false
+            this.btnLoanding = false;
           });
       }
     }

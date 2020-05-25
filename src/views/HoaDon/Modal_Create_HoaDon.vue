@@ -20,7 +20,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Khu trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Khu trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -44,7 +47,10 @@
                 </div>
                 <div class="col-md-6" v-if="phongTros">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Phòng trọ<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Phòng trọ
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select
                         class="form-control"
@@ -70,7 +76,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Khách Thuê<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Khách Thuê
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
                       <select class="form-control" v-model="khachThue_id" name="khachThue_id">
                         <option
@@ -89,15 +98,24 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Tên Hoá đơn<sup style="color:#e17055">(*)</sup></label>
+                    <label class="col-sm-3 col-form-label">
+                      Tên Hoá đơn
+                      <sup style="color:#e17055">(*)</sup>
+                    </label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" v-model="tenHoaDon"  name="tenHoaDon" @change="$v.tenHoaDon.$touch()"/>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="tenHoaDon"
+                        name="tenHoaDon"
+                        @change="$v.tenHoaDon.$touch()"
+                      />
                     </div>
-                     <div
-                        class="alert alert-danger"
-                        v-if="$v.tenHoaDon.$error"
-                        role="alert"
-                      >Tên hoá đơn không được trống</div>
+                    <div
+                      class="alert alert-danger"
+                      v-if="$v.tenHoaDon.$error"
+                      role="alert"
+                    >Tên hoá đơn không được trống</div>
                   </div>
                 </div>
               </div>
@@ -121,7 +139,6 @@
                           </label>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -283,14 +300,13 @@ export default {
         axios
           .post("/hoadon/", {
             tenHoaDon: this.tenHoaDon,
-           
+
             noiDung: this.noiDung,
-            khuTro_id:this.khuTro_id,
-            khachThue_id:this.khachThue_id,
-            phongTro_id:this.phongTro_id,
-            dichVu_ids:this.dichVu_ids,
-            tongTien:Number(this.tongTien),
-           
+            khuTro_id: this.khuTro_id,
+            khachThue_id: this.khachThue_id,
+            phongTro_id: this.phongTro_id,
+            dichVu_ids: this.dichVu_ids,
+            tongTien: Number(this.tongTien)
           })
           .then(() => {
             this.onLoading = false;
@@ -307,7 +323,6 @@ export default {
       }
     },
     setTienPhong() {
-     
       this.$v.phongTro_id.$touch();
       let phong = this.phongTros.find(item => item._id == this.phongTro_id);
       this.phong = phong;
@@ -319,7 +334,6 @@ export default {
       this.setTongTien();
     },
     getInput() {
-      
       this.dichvusInput = [];
       this.dichVu_ids.forEach(id => {
         let dv = this.dichVus.find(item => item._id == id);
@@ -396,7 +410,9 @@ export default {
       this.onLoading = true;
       axios.get("/khutro/getphongtro").then(response => {
         this.khuTros = response.data.data;
+        this.khuTro_id = this.khuTros[0]._id;
         this.onLoading = false;
+        this.getDataPhong();
       });
     },
     getDataPhong() {
@@ -414,12 +430,10 @@ export default {
       this.onLoading = true;
       axios.get("/dichvu/").then(response => {
         this.dichVus = response.data.data;
-        
 
         this.onLoading = false;
       });
-    },
-   
+    }
   }
 };
 </script>

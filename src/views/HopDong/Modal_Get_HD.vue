@@ -22,8 +22,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Khu trọ</label>
                     <div class="col-sm-9">
-
-                       <input type="text" class="form-control" v-model="khuTro_id" readonly/>
+                      <input type="text" class="form-control" v-model="khuTro_id" readonly />
                     </div>
                   </div>
                 </div>
@@ -31,7 +30,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Phòng trọ</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" v-model="phongTro_id" readonly/>
+                      <input type="text" class="form-control" v-model="phongTro_id" readonly />
                     </div>
                   </div>
                 </div>
@@ -41,7 +40,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Khách Thuê</label>
                     <div class="col-sm-9">
-                       <input type="text" class="form-control" v-model="khachThue_id" readonly />
+                      <input type="text" class="form-control" v-model="khachThue_id" readonly />
                     </div>
                   </div>
                 </div>
@@ -49,7 +48,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Loại hợp đồng</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" v-model="loaiHopDong" readonly/>
+                      <input type="text" class="form-control" v-model="loaiHopDong" readonly />
                     </div>
                   </div>
                 </div>
@@ -73,7 +72,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Thời hạn</label>
                     <div class="col-sm-9">
-                     <input
+                      <input
                         type="text"
                         class="form-control"
                         v-model="thoiHan"
@@ -89,7 +88,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Ngày Bắt đầu</label>
                     <div class="col-sm-9">
-                     <input type="text" class="form-control" v-model="ngayBatDau" readonly>
+                      <input type="text" class="form-control" v-model="ngayBatDau" readonly />
                     </div>
                   </div>
                 </div>
@@ -97,7 +96,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Ngày Kết thúc</label>
                     <div class="col-sm-9">
-                       <input type="text" class="form-control" v-model="ngayKetThuc" readonly>
+                      <input type="text" class="form-control" v-model="ngayKetThuc" readonly />
                     </div>
                   </div>
                 </div>
@@ -116,7 +115,6 @@
                           name="tienCoc"
                           readonly
                         />
-                        
                       </div>
                     </div>
                   </div>
@@ -125,7 +123,13 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Nội dung</label>
                     <div class="col-sm-9">
-                      <textarea rows="8" type="text" class="form-control" v-model="noiDung" readonly />
+                      <textarea
+                        rows="8"
+                        type="text"
+                        class="form-control"
+                        v-model="noiDung"
+                        readonly
+                      />
                     </div>
                   </div>
                 </div>
@@ -134,12 +138,8 @@
                 <div class="col-md-7"></div>
                 <div class="col-md-4">
                   <div class="row">
-                    
                     <div class="col-md-6">
-                      <button
-                        class="btn btn-light"
-                        @click.prevent="$modal.hide('getHopDong')"
-                      >Đóng</button>
+                      <button class="btn btn-light" @click.prevent="$modal.hide('getHopDong')">Đóng</button>
                     </div>
                   </div>
                 </div>
@@ -155,8 +155,8 @@
 <script>
 export default {
   created() {
-   this.getDataKhu;
-   this.getKhachThue;
+    this.getDataKhu;
+    this.getKhachThue;
   },
   data: function() {
     return {
@@ -182,17 +182,20 @@ export default {
   methods: {
     getData(event) {
       this.hopDong = event.params.hopDong;
-      this.tenHopDong =this.hopDong.tenHopDong;
+      this.tenHopDong = this.hopDong.tenHopDong;
       this.loaiHopDong = this.hopDong.loaiHopDong;
       this.khachThue_id = this.hopDong.khachThue_id.tenKhachThue;
       this.khuTro_id = this.hopDong.khuTro_id.tenKhuTro;
       this.phongTro_id = this.hopDong.phongTro_id.tenPhongTro;
       this.thoiHan = this.hopDong.thoiHan;
       this.ngayBatDau = this.hopDong.ngayBatDau;
-     
+
       this.ngayKetThuc = this.hopDong.ngayKetThuc;
-     
-      this.tienCoc = this.hopDong.tienCoc;
+
+      this.tienCoc = new Intl.NumberFormat("it-IT", {
+        style: "currency",
+        currency: "VND"
+      }).format(this.hopDong.tienCoc);
       this.noiDung = this.hopDong.noiDung;
     },
     changeTienCoc() {

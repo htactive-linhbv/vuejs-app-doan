@@ -87,14 +87,8 @@
                         @change="$v.email.$touch()"
                       />
                       <div v-if="$v.email.$error" class="alert alert-danger" role="alert">
-                        <p
-                          v-if="!$v.email.required"
-                          style="margin:0px"
-                        >Email thoại không được bỏ trống</p>
-                        <p
-                          v-if="!$v.email.email"
-                          style="margin:0px"
-                        >Email không đúng</p>
+                        <p v-if="!$v.email.required" style="margin:0px">Email không được bỏ trống</p>
+                        <p v-if="!$v.email.email" style="margin:0px">Email không đúng</p>
                       </div>
                     </div>
                   </div>
@@ -135,7 +129,15 @@
                 <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-7">
-                      <button class="btn btn-success" @click.prevent="create()">Thêm mới <span class="spinner-border spinner-border-sm" v-if="onLoading" role="status" aria-hidden="true"></span></button>
+                      <button class="btn btn-success" @click.prevent="create()">
+                        Thêm mới
+                        <span
+                          class="spinner-border spinner-border-sm"
+                          v-if="onLoading"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </button>
                     </div>
                     <div class="col-md-5">
                       <button
@@ -159,17 +161,15 @@ const { required, numeric, email } = require("vuelidate/lib/validators");
 //import DateDropdown from "vue-date-dropdown";
 import axios from "axios";
 export default {
-  created() {
-   
-  },
+  created() {},
   data: function() {
     return {
       hoVaTen: null,
       soDienThoai: null,
       email: null,
       goi: "1",
-      error:'',
-      onLoading:''
+      error: "",
+      onLoading: ""
     };
   },
   components: {
@@ -187,7 +187,7 @@ export default {
       required,
       email
     },
-      goi: {
+    goi: {
       required
     }
   },
@@ -206,16 +206,19 @@ export default {
             this.onLoading = false;
             alert("Thêm mới thành công");
             this.$emit("createSuccess");
-            this.$emit("createSuccess", "Thêm mới thành công, Mật khẩu được gửi về mail của bạn");
+            this.$emit(
+              "createSuccess",
+              "Thêm mới thành công, Mật khẩu được gửi về mail của bạn"
+            );
             this.$modal.hide("createChuTro");
           })
-          .catch((err) => {
+          .catch(err => {
             console.log(err);
-            
-            if(err.response.status==400){
-                this.error=err.response.data.err
-            }else{
-               alert("Thêm mới thất bại");
+
+            if (err.response.status == 400) {
+              this.error = err.response.data.err;
+            } else {
+              alert("Thêm mới thất bại");
             }
             this.onLoading = false;
           });
